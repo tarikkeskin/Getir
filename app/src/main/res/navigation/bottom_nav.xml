@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/bottom_nav"
+    app:startDestination="@id/mainPageFragment">
+
+    <fragment
+        android:id="@+id/mainPageFragment"
+        android:name="com.example.getirdesign.fragments.MainPageFragment"
+        android:label="fragment_main_page"
+        tools:layout="@layout/fragment_main_page" />
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.example.getirdesign.fragments.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" />
+    <fragment
+        android:id="@+id/homePageFragment"
+        android:name="com.example.getirdesign.fragments.HomePageFragment"
+        android:label="fragment_home_page"
+        tools:layout="@layout/fragment_home_page" />
+    <fragment
+        android:id="@+id/profilFragment"
+        android:name="com.example.getirdesign.fragments.ProfilFragment"
+        android:label="fragment_profil"
+        tools:layout="@layout/fragment_profil" />
+    <fragment
+        android:id="@+id/giftsFragment"
+        android:name="com.example.getirdesign.fragments.GiftsFragment"
+        android:label="fragment_gifts"
+        tools:layout="@layout/fragment_gifts" />
+</navigation>
