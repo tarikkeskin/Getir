@@ -1,19 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
         android:id="@+id/homePageFragment"
-        android:icon="@drawable/home_page_icon" />
+        android:icon="@drawable/home_page_icon"
+        android:title="@string/alt" />
     <item
         android:id="@+id/searchFragment"
-        android:icon="@drawable/search_page_icon" />
+        android:icon="@drawable/search_page_icon"
+        android:title="@string/alt" />
     <item
         android:id="@+id/mainPageFragment"
-        android:icon="@drawable/main_page_icon" />
+        android:icon="@drawable/main_page_icon"
+        android:title="@string/alt" />
     <item
         android:id="@+id/profilFragment"
-        android:icon="@drawable/profil_page_icon" />
+        android:icon="@drawable/profil_page_icon"
+        android:title="@string/alt" />
     <item
         android:id="@+id/giftsFragment"
-        android:icon="@drawable/gift_page_icon" />
+        android:icon="@drawable/gift_page_icon"
+        android:title="@string/alt" />
 </menu>

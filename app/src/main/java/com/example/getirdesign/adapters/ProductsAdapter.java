@@ -47,8 +47,11 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.CardDe
         t.imageViewProduct.setImageResource(
                 mContext.getResources().getIdentifier(product.getProductImage(),"drawable",mContext.getPackageName()));
         t.textViewProductName.setText(product.getProductName());
-        t.textViewProductPrice.setText(product.getProductPrice()+" $");
-        t.textViewWeight.setText(product.getProductWeight());
+
+        String temp = String.valueOf(product.getProductPrice());
+        temp = temp.replace('.', ',');
+        t.textViewProductPrice.setText("₺"+temp);
+        t.textViewWeight.setText(product.getProductWeight()+" g");
 
     }
 
