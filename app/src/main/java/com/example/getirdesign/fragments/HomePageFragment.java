@@ -79,17 +79,17 @@ public class HomePageFragment extends Fragment {
 
     public ArrayList<Products> fillTheProducts(){
         ArrayList<Products> productsArrayListTemp = new ArrayList<>();
-        Products p1 = new Products(1,"Lay's Garlic Sauce","cips1",3.89,150);
-        Products p2 = new Products(2,"Lay's Honey Barbecue","cips2",4.99,165);
-        Products p3 = new Products(3,"Lay's Original Wavy Family Size","cips3",6.99,150);
-        Products p4 = new Products(4,"Pringles Original","cips4",2.90,165);
-        Products p5 = new Products(5,"Pringles Texas BBQ Sauce","cips5",3.59,165);
-        Products p6 = new Products(6,"Pringles Jalapeno","cips6",3.59,165);
-        Products p7 = new Products(7,"Doritos Nacho Cheese","cips7",3.89,113);
-        Products p8 = new Products(8,"Ruffles Original","cips8",2.30,150);
+        Products p1 = new Products(1,"Lay's Sarımsak & Soğan","cips1",3.89,150);
+        Products p2 = new Products(2,"Lay's Bal Barbekü","cips2",4.99,165);
+        Products p3 = new Products(3,"Lay's Klasik Dalgalı Aile Boyu","cips3",6.99,210);
+        Products p4 = new Products(4,"Pringles Klasik","cips4",2.90,165);
+        Products p5 = new Products(5,"Pringles Texas BBQ Sos","cips5",3.59,165);
+        Products p6 = new Products(6,"Pringles Jalapeno Biberi","cips6",3.59,165);
+        Products p7 = new Products(7,"Doritos Nacho Peynirli","cips7",3.89,113);
+        Products p8 = new Products(8,"Ruffles Klasik","cips8",2.30,150);
         Products p9 = new Products(9,"Cheetos Puffs","cips9",1.99,41);
-        Products p10 = new Products(10,"Doritos Original Salted","cips10",3.89,113);
-        Products p11 = new Products(11,"Cheetos Beef and Onion","cips11",1.99,41);
+        Products p10 = new Products(10,"Doritos Original Tuzlu","cips10",3.89,113);
+        Products p11 = new Products(11,"Cheetos Dana Etli & Soğanlı","cips11",1.99,41);
         productsArrayListTemp.add(p1);
         productsArrayListTemp.add(p2);
         productsArrayListTemp.add(p3);

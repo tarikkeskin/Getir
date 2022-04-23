@@ -13,8 +13,9 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:menu="@menu/menu_design"
-        app:itemIconSize="27dp"
+        app:itemIconSize="31dp"
         />
+
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/navHostFragment"

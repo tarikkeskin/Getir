@@ -1,6 +1,8 @@
 package com.example.getirdesign.adapters;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.getirdesign.Products.SubCategory;
+import com.example.getirdesign.R;
 import com.example.getirdesign.databinding.CardSubcategoryDesignBinding;
 
 import java.util.List;
@@ -41,11 +44,21 @@ public class SubCategoryAdapter extends RecyclerView.Adapter<SubCategoryAdapter.
         return new SubCategoryDesignAttachment(tasarim);
     }
 
+    @SuppressLint("ResourceAsColor")
     @Override
     public void onBindViewHolder(@NonNull SubCategoryDesignAttachment holder, int position) {
         SubCategory subCategory = subCategoryList.get(position);
         CardSubcategoryDesignBinding t = holder.tasarim;
         t.textViewSubCategoryName.setText(subCategory.getSubCategoryName());
+
+        t.cardViewSubCategory.setOnClickListener(view -> {
+
+            if(t.cardViewSubCategory.isChecked()){
+                t.textViewSubCategoryName.setTextColor(Color.WHITE);
+            }else{
+                t.textViewSubCategoryName.setTextColor(R.color.mainColor);
+            }
+        });
 
     }
 

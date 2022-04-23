@@ -4,14 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:backgroundTint="@color/mainColor"
+    android:backgroundTint="@color/selector_card_view_colors"
     android:orientation="vertical">
 
-    <androidx.cardview.widget.CardView
+    <com.example.getirdesign.features.CheckableCardView
         android:id="@+id/cardViewCategory"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         android:backgroundTint="@color/mainColor"
+        android:clickable="true"
+        android:focusable="true"
+        android:checkable="true"
         app:cardCornerRadius="0dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
@@ -33,6 +36,15 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
+
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.cardview.widget.CardView>
+    </com.example.getirdesign.features.CheckableCardView>
+
+    <FrameLayout
+        android:id="@+id/frame_category_card"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/mainColor"
+        android:visibility="visible" />
+
 </LinearLayout>

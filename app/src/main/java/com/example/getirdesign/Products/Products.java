@@ -10,6 +10,7 @@ public class Products implements Serializable {
     private double productPrice;
     private int productWeight;
 
+
     public Products() {
     }
 
