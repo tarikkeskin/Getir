@@ -1,4 +1,4 @@
-package com.example.getirdesign.Products;
+package com.example.getirdesign.entities;
 
 import java.io.Serializable;
 

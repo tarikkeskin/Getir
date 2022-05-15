@@ -1,4 +1,4 @@
-package com.example.getirdesign.Products;
+package com.example.getirdesign.entities;
 
 public class Category {
     private int categoryId;

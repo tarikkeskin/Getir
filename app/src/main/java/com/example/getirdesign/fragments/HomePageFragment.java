@@ -2,21 +2,25 @@ package com.example.getirdesign.fragments;
 
 import android.os.Bundle;
 
+import androidx.annotation.Nullable;
+import androidx.databinding.DataBindingUtil;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.getirdesign.Products.Category;
-import com.example.getirdesign.Products.Products;
-import com.example.getirdesign.Products.SubCategory;
 import com.example.getirdesign.R;
+import com.example.getirdesign.entities.Category;
+import com.example.getirdesign.entities.Products;
+import com.example.getirdesign.entities.SubCategory;
 import com.example.getirdesign.adapters.CategoryAdapter;
 import com.example.getirdesign.adapters.ProductsAdapter;
 import com.example.getirdesign.adapters.SubCategoryAdapter;
 import com.example.getirdesign.databinding.FragmentHomePageBinding;
+import com.example.getirdesign.viewmodel.HomePageFragmentViewModel;
 
 import java.util.ArrayList;
 
@@ -24,85 +28,52 @@ import java.util.ArrayList;
 public class HomePageFragment extends Fragment {
 
     private FragmentHomePageBinding tasarim;
+    private HomePageFragmentViewModel viewModel;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
 
-        tasarim = FragmentHomePageBinding.inflate(inflater, container, false);
+        tasarim = DataBindingUtil.inflate(inflater, R.layout.fragment_home_page,container, false);
 
 
-        /**
+        /*
          * Products Recycler view
          */
+        viewModel.productsList.observe(getViewLifecycleOwner(),list -> {
+            ProductsAdapter adapterProduct = new ProductsAdapter(requireContext(),list,viewModel);
+            tasarim.setProductsAdapter(adapterProduct);
+        });
 
-        tasarim.recyclerViewProduct.setLayoutManager(new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.VERTICAL));
 
-        ArrayList<Products> productsArrayList = fillTheProducts();
-
-        ProductsAdapter adapterProduct = new ProductsAdapter(requireContext(),productsArrayList);
-        tasarim.recyclerViewProduct.setAdapter(adapterProduct);
-
-        /**
+        /*
          * Categories Recycler view
          */
-
-        tasarim.recyclerViewCategori.setLayoutManager(new StaggeredGridLayoutManager(1,StaggeredGridLayoutManager.HORIZONTAL));
-
         ArrayList<Category> categoryArrayList = fillCategories();
 
         CategoryAdapter adapterCategory = new CategoryAdapter(requireContext(),categoryArrayList);
-        tasarim.recyclerViewCategori.setAdapter(adapterCategory);
+        tasarim.setCategotyAdapter(adapterCategory);
 
-        /**
+        /*
          * SubCategories Recycler view
          */
-
-        tasarim.recyclerViewAltCategori.setLayoutManager(new StaggeredGridLayoutManager(1,StaggeredGridLayoutManager.HORIZONTAL));
-
         ArrayList<SubCategory> subCategoryArrayList = fillSubCategories();
 
         SubCategoryAdapter adapterSubCategory = new SubCategoryAdapter(requireContext(),subCategoryArrayList);
-        tasarim.recyclerViewAltCategori.setAdapter(adapterSubCategory);
-
-
-
-
-
+        tasarim.setSubCategoryAdapter(adapterSubCategory);
 
         return tasarim.getRoot();
     }
 
-
-
-
-
-    public ArrayList<Products> fillTheProducts(){
-        ArrayList<Products> productsArrayListTemp = new ArrayList<>();
-        Products p1 = new Products(1,"Lay's Sarımsak & Soğan","cips1",3.89,150);
-        Products p2 = new Products(2,"Lay's Bal Barbekü","cips2",4.99,165);
-        Products p3 = new Products(3,"Lay's Klasik Dalgalı Aile Boyu","cips3",6.99,210);
-        Products p4 = new Products(4,"Pringles Klasik","cips4",2.90,165);
-        Products p5 = new Products(5,"Pringles Texas BBQ Sos","cips5",3.59,165);
-        Products p6 = new Products(6,"Pringles Jalapeno Biberi","cips6",3.59,165);
-        Products p7 = new Products(7,"Doritos Nacho Peynirli","cips7",3.89,113);
-        Products p8 = new Products(8,"Ruffles Klasik","cips8",2.30,150);
-        Products p9 = new Products(9,"Cheetos Puffs","cips9",1.99,41);
-        Products p10 = new Products(10,"Doritos Original Tuzlu","cips10",3.89,113);
-        Products p11 = new Products(11,"Cheetos Dana Etli & Soğanlı","cips11",1.99,41);
-        productsArrayListTemp.add(p1);
-        productsArrayListTemp.add(p2);
-        productsArrayListTemp.add(p3);
-        productsArrayListTemp.add(p4);
-        productsArrayListTemp.add(p5);
-        productsArrayListTemp.add(p6);
-        productsArrayListTemp.add(p7);
-        productsArrayListTemp.add(p8);
-        productsArrayListTemp.add(p9);
-        productsArrayListTemp.add(p10);
-        productsArrayListTemp.add(p11);
-        return  productsArrayListTemp;
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        viewModel = new ViewModelProvider(this).get(HomePageFragmentViewModel.class);
     }
+
+    public void buttonAdd(int product_id){
+        viewModel.add(product_id);
+    }
+
 
     public ArrayList<Category> fillCategories(){
         ArrayList<Category> categoryArrayList = new ArrayList<>();
