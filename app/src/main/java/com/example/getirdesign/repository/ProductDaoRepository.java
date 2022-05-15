@@ -4,7 +4,9 @@ import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.getirdesign.entities.Category;
 import com.example.getirdesign.entities.Products;
+import com.example.getirdesign.entities.SubCategory;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,4 +52,5 @@ public class ProductDaoRepository {
         productsArrayListTemp.add(p11);
         productsList.setValue(productsArrayListTemp);
     }
+
 }

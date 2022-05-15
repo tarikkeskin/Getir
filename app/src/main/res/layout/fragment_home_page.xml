@@ -32,7 +32,9 @@
             android:theme="?attr/actionBarTheme"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:title="Ürünler"
+            android:layout_gravity="center"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerViewCategori"
@@ -74,29 +76,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/recyclerViewAltCategori"
             android:orientation="vertical"/>
-
-        <TextView
-            android:id="@+id/textView10"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="13dp"
-            android:text="Ürünler"
-            android:textColor="@color/white"
-            android:textSize="18sp"
-            android:textStyle="bold"
-            app:layout_constraintEnd_toEndOf="@+id/toolbarHomePage"
-            app:layout_constraintStart_toStartOf="@+id/toolbarHomePage"
-            app:layout_constraintTop_toTopOf="@+id/toolbarHomePage" />
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="13dp"
-            android:src="@drawable/back_arrow_icon"
-            app:layout_constraintStart_toStartOf="@+id/toolbarHomePage"
-            app:layout_constraintTop_toTopOf="@+id/toolbarHomePage" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
