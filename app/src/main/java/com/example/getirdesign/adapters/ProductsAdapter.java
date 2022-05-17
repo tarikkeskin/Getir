@@ -1,12 +1,13 @@
 package com.example.getirdesign.adapters;
 
 import android.content.Context;
+import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
-import androidx.databinding.BindingAdapter;
+import androidx.appcompat.app.AlertDialog;
 import androidx.databinding.DataBindingUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -22,6 +23,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.CardDe
     private Context mContext;
     private List<Products> productsList;
     private HomePageFragmentViewModel viewModel;
+    private int adet;
 
     public ProductsAdapter(Context mContext, List<Products> productsList, HomePageFragmentViewModel viewModel) {
         this.mContext = mContext;
@@ -53,13 +55,30 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.CardDe
 
         t.setProductObject(product);
 
-        t.imageViewProduct.setImageResource(
-                mContext.getResources().getIdentifier(product.getProductImage(),"drawable",mContext.getPackageName()));
+        String url = "http://kasimadalan.pe.hu/yemekler/resimler/"+product.getProductImage();
+        Picasso.get().load(url).into(t.imageViewProduct);
 
         t.CardViewAddCart.setOnClickListener(view -> {
-            viewModel.add(product.getProductId());
-        });
 
+            AlertDialog.Builder builder = new AlertDialog.Builder(mContext);
+
+            builder.setTitle("Adet  giriniz..");
+
+            final EditText input = new EditText(mContext);
+            input.setInputType(InputType.TYPE_CLASS_NUMBER);
+
+            builder.setView(input);
+
+            builder.setPositiveButton("OK", (dialog, which) -> {
+                adet = Integer.parseInt(input.getText().toString());
+                viewModel.add(product.getProductName(),product.getProductImage(), (int) product.getProductPrice(),adet,"tarik");
+            });
+
+            builder.setNegativeButton("İptal", (dialog, which) -> dialog.cancel());
+
+            builder.show();
+
+        });
 
         String temp = String.valueOf(product.getProductPrice());
         temp = temp.replace('.', ',');
@@ -67,10 +86,10 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.CardDe
 
     }
 
-
     @Override
     public int getItemCount() {
         return productsList.size();
     }
+
 
 }

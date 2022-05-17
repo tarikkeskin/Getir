@@ -15,13 +15,13 @@ import com.example.getirdesign.repository.SubCategoryDaoRepository;
 import java.util.List;
 
 public class HomePageFragmentViewModel extends ViewModel {
-    private ProductDaoRepository productDaoRepository = new ProductDaoRepository();
-    private CategoryDaoRepository categoryDaoRepository = new CategoryDaoRepository();
-    private SubCategoryDaoRepository subCategoryDaoRepository = new SubCategoryDaoRepository();
+    private final ProductDaoRepository productDaoRepository = new ProductDaoRepository();
+    private final CategoryDaoRepository categoryDaoRepository = new CategoryDaoRepository();
+    private final SubCategoryDaoRepository subCategoryDaoRepository = new SubCategoryDaoRepository();
 
-    public MutableLiveData<List<Products>> productsList = new MutableLiveData<>();
-    public MutableLiveData<List<Category>> categoryList = new MutableLiveData<>();
-    public MutableLiveData<List<SubCategory>> subCategoryList = new MutableLiveData<>();
+    public MutableLiveData<List<Products>> productsList;
+    public MutableLiveData<List<Category>> categoryList;
+    public MutableLiveData<List<SubCategory>> subCategoryList;
 
     public HomePageFragmentViewModel() {
         getAllProducts();
@@ -32,8 +32,8 @@ public class HomePageFragmentViewModel extends ViewModel {
         subCategoryList = subCategoryDaoRepository.returnAllSubCategoryRepo();
     }
 
-    public void add(int product_id){
-        productDaoRepository.addProductRepo(product_id);
+    public void add(String product_name, String product_image , int product_price , int product_amount,String user_name){
+        productDaoRepository.addProductRepo(product_name,product_image,product_price,product_amount,user_name);
     }
 
     public void getAllProducts(){

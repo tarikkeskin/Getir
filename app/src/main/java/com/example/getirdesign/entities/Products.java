@@ -1,25 +1,33 @@
 package com.example.getirdesign.entities;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 import java.io.Serializable;
 
 public class Products implements Serializable {
-
+    @SerializedName("yemek_id")
+    @Expose
     private int productId;
+    @SerializedName("yemek_adi")
+    @Expose
     private String productName;
+    @SerializedName("yemek_resim_adi")
+    @Expose
     private String productImage;
+    @SerializedName("yemek_fiyat")
+    @Expose
     private double productPrice;
-    private int productWeight;
 
 
     public Products() {
     }
 
-    public Products(int productId, String productName, String productImage, double productPrice, int productWeight) {
+    public Products(int productId, String productName, String productImage, double productPrice) {
         this.productId = productId;
         this.productName = productName;
         this.productImage = productImage;
         this.productPrice = productPrice;
-        this.productWeight = productWeight;
     }
 
     public int getProductId() {
@@ -54,11 +62,4 @@ public class Products implements Serializable {
         this.productPrice = productPrice;
     }
 
-    public int getProductWeight() {
-        return productWeight;
-    }
-
-    public void setProductWeight(int productWeight) {
-        this.productWeight = productWeight;
-    }
 }

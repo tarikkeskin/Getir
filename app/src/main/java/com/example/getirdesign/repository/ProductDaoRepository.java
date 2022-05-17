@@ -4,53 +4,86 @@ import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
 
+import com.example.getirdesign.entities.CRUDCevap;
+import com.example.getirdesign.entities.CartProductsCevap;
 import com.example.getirdesign.entities.Category;
+import com.example.getirdesign.entities.ProductCevap;
 import com.example.getirdesign.entities.Products;
+import com.example.getirdesign.entities.SepetYemekler;
 import com.example.getirdesign.entities.SubCategory;
+import com.example.getirdesign.retrofit.ApiUtils;
+import com.example.getirdesign.retrofit.ProductDaoInterface;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class ProductDaoRepository {
     private MutableLiveData<List<Products>> productsList;
+    private MutableLiveData<List<SepetYemekler>> cartProductsList;
+    private ProductDaoInterface productDaoInterface;
 
     public ProductDaoRepository() {
+        productDaoInterface = ApiUtils.getProductDaoInterface();
         productsList = new MutableLiveData<>();
+        cartProductsList = new MutableLiveData<>();
     }
 
     public MutableLiveData<List<Products>> returnAllProductsRepo(){
         return productsList;
     }
 
-    public void addProductRepo(int product_id){
-        Log.e("Product","->"+product_id);
+    public MutableLiveData<List<SepetYemekler>> returnAllCartProductsRepo(){
+        return cartProductsList;
+    }
+
+    public void addProductRepo(String product_name, String product_image , int product_price , int product_amount,String user_name){
+        Log.e("Product","->"+product_name);
+
+        productDaoInterface.addProductToCart(product_name,product_image,product_price,product_amount,user_name).enqueue(new Callback<CRUDCevap>() {
+            @Override
+            public void onResponse(Call<CRUDCevap> call, Response<CRUDCevap> response) {
+                Log.e("Product","Add product to chart On Response");
+            }
+
+            @Override
+            public void onFailure(Call<CRUDCevap> call, Throwable t) {
+                Log.e("Product","Add product to chart On FAILURE");
+            }
+        });
+
     }
 
     public void getAllProductsRepo(){
-        ArrayList<Products> productsArrayListTemp = new ArrayList<>();
-        Products p1 = new Products(1,"Lay's Sarımsak & Soğan","cips1",3.89,150);
-        Products p2 = new Products(2,"Lay's Bal Barbekü","cips2",4.99,165);
-        Products p3 = new Products(3,"Lay's Klasik Dalgalı Aile Boyu","cips3",6.99,210);
-        Products p4 = new Products(4,"Pringles Klasik","cips4",2.90,165);
-        Products p5 = new Products(5,"Pringles Texas BBQ Sos","cips5",3.59,165);
-        Products p6 = new Products(6,"Pringles Jalapeno Biberi","cips6",3.59,165);
-        Products p7 = new Products(7,"Doritos Nacho Peynirli","cips7",3.89,113);
-        Products p8 = new Products(8,"Ruffles Klasik","cips8",2.30,150);
-        Products p9 = new Products(9,"Cheetos Puffs","cips9",1.99,41);
-        Products p10 = new Products(10,"Doritos Original Tuzlu","cips10",3.89,113);
-        Products p11 = new Products(11,"Cheetos Dana Etli & Soğanlı","cips11",1.99,41);
-        productsArrayListTemp.add(p1);
-        productsArrayListTemp.add(p2);
-        productsArrayListTemp.add(p3);
-        productsArrayListTemp.add(p4);
-        productsArrayListTemp.add(p5);
-        productsArrayListTemp.add(p6);
-        productsArrayListTemp.add(p7);
-        productsArrayListTemp.add(p8);
-        productsArrayListTemp.add(p9);
-        productsArrayListTemp.add(p10);
-        productsArrayListTemp.add(p11);
-        productsList.setValue(productsArrayListTemp);
+        productDaoInterface.allProducts().enqueue(new Callback<ProductCevap>() {
+            @Override
+            public void onResponse(Call<ProductCevap> call, Response<ProductCevap> response) {
+                List<Products> list = response.body().getProducts();
+                productsList.setValue(list);
+            }
+            @Override
+            public void onFailure(Call<ProductCevap> call, Throwable t) {}
+        });
+    }
+
+    public void getCartProductsRepo(String user_name){
+
+        productDaoInterface.getCartProducts(user_name).enqueue(new Callback<CartProductsCevap>() {
+            @Override
+            public void onResponse(Call<CartProductsCevap> call, Response<CartProductsCevap> response) {
+                Log.e("Product","getCartProducts On RESPONSE");
+                List<SepetYemekler> list = response.body().getSepetYemekler();
+                cartProductsList.setValue(list);
+            }
+
+            @Override
+            public void onFailure(Call<CartProductsCevap> call, Throwable t) {
+                Log.e("Product","getCartProducts On FAILURE");
+            }
+        });
     }
 
 }

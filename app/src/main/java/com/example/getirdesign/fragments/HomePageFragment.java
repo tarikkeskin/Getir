@@ -95,11 +95,6 @@ public class HomePageFragment extends Fragment implements SearchView.OnQueryText
     }
 
 
-    public void buttonAdd(int product_id){
-        viewModel.add(product_id);
-    }
-
-
     @Override
     public boolean onQueryTextSubmit(String query) {
         search(query);
