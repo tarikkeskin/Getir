@@ -8,9 +8,12 @@ import androidx.navigation.ui.NavigationUI;
 import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 
+import com.example.getirdesign.adapters.SepetYemekAdapter;
 import com.example.getirdesign.databinding.BottomNavigationBinding;
+import com.example.getirdesign.viewmodel.MainPageFragmentViewModel;
 import com.google.android.material.badge.BadgeDrawable;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
@@ -27,17 +30,10 @@ public class MainActivity extends AppCompatActivity {
         d.setNumber(8);
         d.setBackgroundColor(Color.rgb(82,54,204));
 
-
-
         NavHostFragment navHostFragment = (NavHostFragment) getSupportFragmentManager().findFragmentById(R.id.navHostFragment);
         NavigationUI.setupWithNavController(tasarim.bottomNav,navHostFragment.getNavController());
 
     }
 
-    private void removeItemsUnderline(BottomNavigationView bottomNavigationView) {
-        for (int i = 0; i <  bottomNavigationView.getMenu().size(); i++) {
-            MenuItem item = tasarim.bottomNav.getMenu().getItem(i);
-            item.setTitle(item.getTitle().toString());
-        }
-    }
+
 }

@@ -15,6 +15,7 @@ import com.example.getirdesign.R;
 import com.example.getirdesign.entities.Products;
 import com.example.getirdesign.databinding.CardProductDesingBinding;
 import com.example.getirdesign.viewmodel.HomePageFragmentViewModel;
+import com.example.getirdesign.viewmodel.MainPageFragmentViewModel;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;

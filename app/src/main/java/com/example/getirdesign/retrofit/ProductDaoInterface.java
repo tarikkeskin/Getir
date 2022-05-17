@@ -27,4 +27,9 @@ public interface ProductDaoInterface {
     @FormUrlEncoded
     Call<CartProductsCevap> getCartProducts(@Field("kullanici_adi") String kullanici_adi);
 
+    @POST("yemekler/sepettenYemekSil.php")
+    @FormUrlEncoded
+    Call<CRUDCevap> removeProductFromCart(@Field("sepet_yemek_id") int yemek_id,
+                                          @Field("kullanici_adi") String user_name);
+
 }

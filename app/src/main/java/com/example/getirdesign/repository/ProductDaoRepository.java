@@ -41,18 +41,12 @@ public class ProductDaoRepository {
     }
 
     public void addProductRepo(String product_name, String product_image , int product_price , int product_amount,String user_name){
-        Log.e("Product","->"+product_name);
-
         productDaoInterface.addProductToCart(product_name,product_image,product_price,product_amount,user_name).enqueue(new Callback<CRUDCevap>() {
             @Override
-            public void onResponse(Call<CRUDCevap> call, Response<CRUDCevap> response) {
-                Log.e("Product","Add product to chart On Response");
-            }
+            public void onResponse(Call<CRUDCevap> call, Response<CRUDCevap> response) { }
 
             @Override
-            public void onFailure(Call<CRUDCevap> call, Throwable t) {
-                Log.e("Product","Add product to chart On FAILURE");
-            }
+            public void onFailure(Call<CRUDCevap> call, Throwable t) { }
         });
 
     }
@@ -74,15 +68,22 @@ public class ProductDaoRepository {
         productDaoInterface.getCartProducts(user_name).enqueue(new Callback<CartProductsCevap>() {
             @Override
             public void onResponse(Call<CartProductsCevap> call, Response<CartProductsCevap> response) {
-                Log.e("Product","getCartProducts On RESPONSE");
                 List<SepetYemekler> list = response.body().getSepetYemekler();
                 cartProductsList.setValue(list);
             }
 
             @Override
-            public void onFailure(Call<CartProductsCevap> call, Throwable t) {
-                Log.e("Product","getCartProducts On FAILURE");
-            }
+            public void onFailure(Call<CartProductsCevap> call, Throwable t) { }
+        });
+    }
+
+    public void removeProductFromCartRepo(int product_id,String user_name){
+        productDaoInterface.removeProductFromCart(product_id,user_name).enqueue(new Callback<CRUDCevap>() {
+            @Override
+            public void onResponse(Call<CRUDCevap> call, Response<CRUDCevap> response) { }
+
+            @Override
+            public void onFailure(Call<CRUDCevap> call, Throwable t) { }
         });
     }
 

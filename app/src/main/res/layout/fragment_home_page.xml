@@ -30,17 +30,19 @@
             android:background="?attr/colorPrimary"
             android:minHeight="?attr/actionBarSize"
             android:theme="?attr/actionBarTheme"
+            android:visibility="visible"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toTopOf="parent"
+            app:title=" ">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Ürünler"
                 android:layout_gravity="center"
-                android:textSize="22sp">
-            </TextView>
+                android:text="Ürünler"
+                android:textAppearance="@style/TextAppearance.Material3.BodyLarge"
+                android:textSize="22sp"></TextView>
 
         </androidx.appcompat.widget.Toolbar>
 

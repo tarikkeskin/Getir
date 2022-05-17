@@ -1,5 +1,6 @@
 package com.example.getirdesign.fragments;
 
+import android.graphics.Color;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -20,6 +21,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.getirdesign.R;
+import com.example.getirdesign.adapters.SepetYemekAdapter;
 import com.example.getirdesign.entities.Category;
 import com.example.getirdesign.entities.Products;
 import com.example.getirdesign.entities.SubCategory;
@@ -28,6 +30,9 @@ import com.example.getirdesign.adapters.ProductsAdapter;
 import com.example.getirdesign.adapters.SubCategoryAdapter;
 import com.example.getirdesign.databinding.FragmentHomePageBinding;
 import com.example.getirdesign.viewmodel.HomePageFragmentViewModel;
+import com.example.getirdesign.viewmodel.MainPageFragmentViewModel;
+import com.google.android.material.badge.BadgeDrawable;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
 
@@ -35,7 +40,7 @@ import java.util.ArrayList;
 public class HomePageFragment extends Fragment implements SearchView.OnQueryTextListener {
 
     private FragmentHomePageBinding tasarim;
-    private HomePageFragmentViewModel viewModel;
+    private HomePageFragmentViewModel viewModelHomepage;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -49,8 +54,8 @@ public class HomePageFragment extends Fragment implements SearchView.OnQueryText
         /*
          * Products Recycler view
          */
-        viewModel.productsList.observe(getViewLifecycleOwner(),list -> {
-            ProductsAdapter adapterProduct = new ProductsAdapter(requireContext(),list,viewModel);
+        viewModelHomepage.productsList.observe(getViewLifecycleOwner(),list -> {
+            ProductsAdapter adapterProduct = new ProductsAdapter(requireContext(),list,viewModelHomepage);
             tasarim.setProductsAdapter(adapterProduct);
         });
 
@@ -58,7 +63,7 @@ public class HomePageFragment extends Fragment implements SearchView.OnQueryText
         /*
          * Categories Recycler view
          */
-        viewModel.categoryList.observe(getViewLifecycleOwner(),list -> {
+        viewModelHomepage.categoryList.observe(getViewLifecycleOwner(),list -> {
             CategoryAdapter adapterCategory = new CategoryAdapter(requireContext(),list);
             tasarim.setCategotyAdapter(adapterCategory);
         });
@@ -67,7 +72,7 @@ public class HomePageFragment extends Fragment implements SearchView.OnQueryText
         /*
          * SubCategories Recycler view
          */
-        viewModel.subCategoryList.observe(getViewLifecycleOwner(),list -> {
+        viewModelHomepage.subCategoryList.observe(getViewLifecycleOwner(),list -> {
             SubCategoryAdapter adapterSubCategory = new SubCategoryAdapter(requireContext(),list);
             tasarim.setSubCategoryAdapter(adapterSubCategory);
         });
@@ -80,7 +85,7 @@ public class HomePageFragment extends Fragment implements SearchView.OnQueryText
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
-        viewModel = new ViewModelProvider(this).get(HomePageFragmentViewModel.class);
+        viewModelHomepage = new ViewModelProvider(requireActivity()).get(HomePageFragmentViewModel.class);
     }
 
     @Override

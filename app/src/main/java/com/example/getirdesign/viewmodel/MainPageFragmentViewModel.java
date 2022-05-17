@@ -24,5 +24,9 @@ public class MainPageFragmentViewModel extends ViewModel {
         productDaoRepository.getCartProductsRepo("tarik");
     }
 
+    public void removeProductFromCart(int product_id, String user_name){
+        productDaoRepository.removeProductFromCartRepo(product_id,user_name);
+    }
+
 
 }
