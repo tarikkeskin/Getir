@@ -3,7 +3,9 @@ package com.example.getirdesign.adapters;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Color;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -56,8 +58,10 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Catego
 
             if(t.cardViewCategory.isChecked()){
                 t.frameCategoryCard.setBackgroundColor(Color.rgb(248,188,91));
+                Log.e("Product","Category Clicked");
             }else{
                 t.frameCategoryCard.setBackgroundColor(Color.rgb(102,75,218));
+                Log.e("Product","Category unClicked");
             }
 
         });

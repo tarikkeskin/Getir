@@ -49,7 +49,7 @@ public class SubCategoryAdapter extends RecyclerView.Adapter<SubCategoryAdapter.
         SubCategory subCategory = subCategoryList.get(position);
         CardSubcategoryDesignBinding t = holder.tasarim;
         t.textViewSubCategoryName.setText(subCategory.getSubCategoryName());
-
+        t.textViewSubCategoryName.setTextColor(R.color.mainColor);
         t.cardViewSubCategory.setOnClickListener(view -> {
 
             if(t.cardViewSubCategory.isChecked()){
