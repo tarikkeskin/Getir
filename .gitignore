@@ -16,3 +16,4 @@ local.properties
 /google-services.json
 /gradlew
 /gradlew.bat
+/settings.gradle
