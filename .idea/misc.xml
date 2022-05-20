@@ -6,10 +6,44 @@
         <entry key="../../../../../layout/custom_preview.xml" value="0.20092592592592592" />
         <entry key="app/src/main/res/drawable/add_icon.xml" value="0.224" />
         <entry key="app/src/main/res/drawable/card_edge.xml" value="0.1565" />
+        <entry key="app/src/main/res/drawable/card_product_background.xml" value="0.261" />
         <entry key="app/src/main/res/drawable/home_page_icon.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/key_icon.xml" value="0.2525" />
+        <entry key="app/src/main/res/drawable/login_button_background.xml" value="0.2525" />
+        <entry key="app/src/main/res/drawable/login_person_icon.xml" value="0.2525" />
         <entry key="app/src/main/res/drawable/main_page_icon.xml" value="0.299" />
+        <entry key="app/src/main/res/drawable/phone_white_icon.xml" value="0.2755" />
         <entry key="app/src/main/res/drawable/search_page_icon.xml" value="0.232" />
+        <entry key="app/src/main/res/layout-w1240dp/activity_animation.xml" value="0.22734375" />
+        <entry key="app/src/main/res/layout-w1240dp/activity_login.xml" value="0.244140625" />
+        <entry key="app/src/main/res/layout-w1240dp/activity_main.xml" value="0.373828125" />
+        <entry key="app/src/main/res/layout-w1240dp/activity_register_activy.xml" value="0.22734375" />
+        <entry key="app/src/main/res/layout-w1240dp/bottom_navigation.xml" value="0.22734375" />
+        <entry key="app/src/main/res/layout-w1240dp/card_category_desing.xml" value="0.373828125" />
+        <entry key="app/src/main/res/layout-w1240dp/card_sepet_yemek.xml" value="0.373828125" />
+        <entry key="app/src/main/res/layout-w1240dp/card_subcategory_design.xml" value="0.22734375" />
+        <entry key="app/src/main/res/layout-w1240dp/fragment_home_page.xml" value="0.373828125" />
+        <entry key="app/src/main/res/layout-w1240dp/fragment_main_page.xml" value="0.373828125" />
+        <entry key="app/src/main/res/layout-w1240dp/fragment_profil.xml" value="0.373828125" />
+        <entry key="app/src/main/res/layout-w1240dp/fragment_search.xml" value="0.373828125" />
+        <entry key="app/src/main/res/layout-w936dp/activity_animation.xml" value="0.2328125" />
+        <entry key="app/src/main/res/layout-w936dp/activity_login.xml" value="0.221484375" />
+        <entry key="app/src/main/res/layout-w936dp/activity_main.xml" value="0.2328125" />
+        <entry key="app/src/main/res/layout-w936dp/activity_register_activy.xml" value="0.302734375" />
+        <entry key="app/src/main/res/layout-w936dp/bottom_navigation.xml" value="0.2328125" />
+        <entry key="app/src/main/res/layout-w936dp/card_category_desing.xml" value="0.2328125" />
+        <entry key="app/src/main/res/layout-w936dp/card_product_desing.xml" value="0.33" />
+        <entry key="app/src/main/res/layout-w936dp/card_sepet_yemek.xml" value="0.2328125" />
+        <entry key="app/src/main/res/layout-w936dp/card_subcategory_design.xml" value="0.2328125" />
+        <entry key="app/src/main/res/layout-w936dp/fragment_gifts.xml" value="0.2328125" />
+        <entry key="app/src/main/res/layout-w936dp/fragment_home_page.xml" value="0.2328125" />
+        <entry key="app/src/main/res/layout-w936dp/fragment_main_page.xml" value="0.2328125" />
+        <entry key="app/src/main/res/layout-w936dp/fragment_profil.xml" value="0.2328125" />
+        <entry key="app/src/main/res/layout-w936dp/fragment_search.xml" value="0.2328125" />
+        <entry key="app/src/main/res/layout/activity_animation.xml" value="0.32909037272135416" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.4036458333333333" />
+        <entry key="app/src/main/res/layout/activity_register_activy.xml" value="0.33" />
         <entry key="app/src/main/res/layout/bottom_navigation.xml" value="0.2" />
         <entry key="app/src/main/res/layout/bottomtemp.xml" value="0.2515625" />
         <entry key="app/src/main/res/layout/card_category_desing.xml" value="0.4427605068560728" />
@@ -20,15 +54,17 @@
         <entry key="app/src/main/res/layout/category.xml" value="0.3880208333333333" />
         <entry key="app/src/main/res/layout/fragment_gifts.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/fragment_home_page.xml" value="0.3412068684895833" />
-        <entry key="app/src/main/res/layout/fragment_main_page.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_main_page.xml" value="0.3412068684895833" />
         <entry key="app/src/main/res/layout/fragment_profil.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/fragment_search.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/item_background.xml" value="0.3758974358974359" />
         <entry key="app/src/main/res/layout/ldl.xml" value="0.36770833333333336" />
         <entry key="app/src/main/res/layout/temp.xml" value="0.4634531656901042" />
         <entry key="app/src/main/res/layout/temp2.xml" value="0.4002421061197917" />
+        <entry key="app/src/main/res/layout/view_number_dialog.xml" value="0.253125" />
         <entry key="app/src/main/res/menu/menu_design.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/menu/search_mainpage.xml" value="0.3098958333333333" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/getir_app_icon.xml" value="0.2195" />
       </map>
     </option>
   </component>

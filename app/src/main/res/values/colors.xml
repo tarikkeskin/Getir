@@ -10,4 +10,24 @@
     <!-- Our Colors  -->
     <color name="mainColor">#664BDA</color>
 
+    <!--  yesilimsi renkler -->
+    <color name="mainColor_1">#6A8C61</color>
+    <color name="mainColor_2">#BABF17</color>
+    <color name="mainColor_3">#EE718F42</color>
+    <color name="mainColor_4">#58B636</color>
+    <color name="mainColor_5">#734636</color>
+
+    <!--  Kirmizimsi renkler -->
+    <color name="mainColor_11">#B7E9A6A0</color>
+    <color name="mainColor_12">#030202</color>
+    <color name="mainColor_13">#A61F1F</color>
+    <color name="mainColor_14">#D93232</color>
+
+    <color name="transparent_white">#3CFFFFFF</color>
+    <color name="transparent_white_2">#8AFFFFFF</color>
+    <color name="transparent_red">#A1BC1212</color>
+    <color name="transparent_green">#A353C52B</color>
+
+    <color name="background_purple">#3700B3</color>
+
 </resources>

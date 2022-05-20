@@ -67,7 +67,7 @@ public class SepetYemekAdapter extends RecyclerView.Adapter<SepetYemekAdapter.Se
 
 
         t.iVSepetYemekSil.setOnClickListener(view -> {
-            Snackbar.make(view,"Ürünü sepetten kaldırmak istiyor musun?",Snackbar.LENGTH_LONG)
+            Snackbar.make(view,"Ürünü sepetten kaldırmak istediğine emin misin?",Snackbar.LENGTH_LONG)
                     .setAction("Evet",view1 -> {
                         viewModel.removeProductFromCart(Integer.parseInt(sepetYemek.getSepetYemekId()),"tarik");
                         viewModel.getAllCartProducts();
@@ -76,13 +76,10 @@ public class SepetYemekAdapter extends RecyclerView.Adapter<SepetYemekAdapter.Se
                             mContext.startActivity(intent);
                         }
                     })
-                    .setActionTextColor(Color.RED)
-                    .setTextColor(Color.BLUE)
-                    .setBackgroundTint(Color.WHITE)
+                    .setActionTextColor(Color.WHITE)
+                    .setTextColor(Color.WHITE)
+                    .setBackgroundTint(Color.rgb(55,0,179))
                     .show();
-
-
-
         });
     }
 
