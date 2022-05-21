@@ -27,6 +27,7 @@
         <entry key="app/src/main/res/layout-w1240dp/fragment_main_page.xml" value="0.373828125" />
         <entry key="app/src/main/res/layout-w1240dp/fragment_profil.xml" value="0.373828125" />
         <entry key="app/src/main/res/layout-w1240dp/fragment_search.xml" value="0.373828125" />
+        <entry key="app/src/main/res/layout-w1240dp/view_number_dialog.xml" value="0.151953125" />
         <entry key="app/src/main/res/layout-w936dp/activity_animation.xml" value="0.2328125" />
         <entry key="app/src/main/res/layout-w936dp/activity_login.xml" value="0.221484375" />
         <entry key="app/src/main/res/layout-w936dp/activity_main.xml" value="0.2328125" />
@@ -41,6 +42,7 @@
         <entry key="app/src/main/res/layout-w936dp/fragment_main_page.xml" value="0.2328125" />
         <entry key="app/src/main/res/layout-w936dp/fragment_profil.xml" value="0.2328125" />
         <entry key="app/src/main/res/layout-w936dp/fragment_search.xml" value="0.2328125" />
+        <entry key="app/src/main/res/layout-w936dp/view_number_dialog.xml" value="0.2701388888888889" />
         <entry key="app/src/main/res/layout/activity_animation.xml" value="0.32909037272135416" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.33" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.4036458333333333" />

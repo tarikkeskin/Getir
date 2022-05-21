@@ -25,7 +25,7 @@
         android:layout_marginEnd="32dp"
         android:layout_marginBottom="12dp"
         android:background="@color/transparent_white"
-        android:hint="İsim Soyisim"
+        android:hint="E-mail"
         app:boxBackgroundColor="@color/white"
         app:boxStrokeColor="@color/white"
         app:errorTextColor="@color/white"
@@ -151,7 +151,7 @@
         android:layout_marginBottom="12dp"
         app:layout_constraintBottom_toTopOf="@+id/imageView10"
         app:layout_constraintStart_toStartOf="parent"
-        app:srcCompat="@drawable/login_person_icon" />
+        app:srcCompat="@drawable/email_icon" />
 
     <ImageView
         android:id="@+id/imageView11"
