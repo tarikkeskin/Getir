@@ -1,7 +1,5 @@
 package com.example.getirdesign.fragments;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 
@@ -25,29 +23,29 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 
 public class MainPageFragment extends Fragment {
-    private FragmentMainPageBinding tasarim;
+    private FragmentMainPageBinding binding;
     private MainPageFragmentViewModel viewModel;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        tasarim = DataBindingUtil.inflate(inflater,R.layout.fragment_main_page ,container, false);
-        tasarim.setSepetBos("Sepet Boş");
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_main_page ,container, false);
 
+        binding.setFlagVisibleAnimation(true);
 
         AtomicInteger result = new AtomicInteger();
         viewModel.cartProductsList.observe(getViewLifecycleOwner(),list -> {
             SepetYemekAdapter adapter = new SepetYemekAdapter(requireContext(),list,viewModel);
-            tasarim.setSepetAdapter(adapter);
+            binding.setSepetAdapter(adapter);
 
             result.set(0);
             for (int i = 0; i < list.size(); i++) {
                 result.addAndGet((Integer.parseInt(list.get(i).getYemekFiyat())*Integer.parseInt(list.get(i).getYemekSiparisAdet())));
             }
 
-            tasarim.setSepetBos(" ");
-            tasarim.setFlagVisible(true);
-            tasarim.setTotalFiyat(String.valueOf(result)+" ₺");
+            binding.setFlagVisibleAnimation(false);
+            binding.setFlagVisible(true);
+            binding.setTotalFiyat(String.valueOf(result)+" ₺");
 
             if(list.size()!=0) {
                 BottomNavigationView navigation = (BottomNavigationView) getActivity().findViewById(R.id.bottomNav);
@@ -58,7 +56,9 @@ public class MainPageFragment extends Fragment {
 
         });
 
-        return tasarim.getRoot();
+
+
+        return binding.getRoot();
     }
 
     @Override

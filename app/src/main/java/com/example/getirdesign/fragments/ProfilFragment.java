@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 
-
+import com.example.getirdesign.R;
 import com.example.getirdesign.databinding.FragmentProfilBinding;
 
 
@@ -19,9 +19,7 @@ public class ProfilFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         binding = FragmentProfilBinding.inflate(inflater, container, false);
-
-
-
+        binding.profileAnimation.setAnimation(R.raw.profile_animation);
 
         return binding.getRoot();
     }

@@ -17,6 +17,9 @@
             name="flagVisible"
             type="Boolean" />
         <variable
+            name="flagVisibleAnimation"
+            type="Boolean" />
+        <variable
             name="totalFiyat"
             type="String" />
         <import type="android.view.View"/>
@@ -98,8 +101,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/right_arrow_icon"
-                />
+                app:srcCompat="@drawable/right_arrow_icon" />
 
             <TextView
                 android:id="@+id/tVTotalFiyat"
@@ -109,11 +111,11 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:fontFamily="monospace"
+                android:text="@{totalFiyat}"
                 android:textAlignment="textStart"
                 android:textColor="@color/purple_700"
                 android:textSize="19sp"
                 android:textStyle="bold"
-                android:text="@{totalFiyat}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/sepetTutarı"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -134,16 +136,24 @@
                 app:layout_constraintTop_toTopOf="parent" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-        <TextView
-            android:id="@+id/textViewSepetBos"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@{sepetBos}"
-            android:textSize="24sp"
-            android:textStyle="bold|italic"
+        <com.airbnb.lottie.LottieAnimationView
+            android:id="@+id/emptyCartAnimation"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="60dp"
+            android:layout_marginTop="110dp"
+            android:layout_marginEnd="60dp"
+            android:layout_marginBottom="110dp"
+            android:visibility="@{flagVisibleAnimation ? View.VISIBLE : View.INVISIBLE}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/empty_cart_animation"
+            app:lottie_speed="0.7"
+            />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

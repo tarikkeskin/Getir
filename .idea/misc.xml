@@ -5,6 +5,7 @@
       <map>
         <entry key="../../../../../layout/custom_preview.xml" value="0.20092592592592592" />
         <entry key="app/src/main/res/drawable/add_icon.xml" value="0.224" />
+        <entry key="app/src/main/res/drawable/cancel_icon.xml" value="0.192" />
         <entry key="app/src/main/res/drawable/card_edge.xml" value="0.1565" />
         <entry key="app/src/main/res/drawable/card_product_background.xml" value="0.261" />
         <entry key="app/src/main/res/drawable/delete_icon.xml" value="0.2025" />
@@ -19,6 +20,7 @@
         <entry key="app/src/main/res/layout-w1240dp/activity_login.xml" value="0.244140625" />
         <entry key="app/src/main/res/layout-w1240dp/activity_main.xml" value="0.373828125" />
         <entry key="app/src/main/res/layout-w1240dp/activity_register_activy.xml" value="0.22734375" />
+        <entry key="app/src/main/res/layout-w1240dp/added_to_cart_view_animation.xml" value="0.12473958333333333" />
         <entry key="app/src/main/res/layout-w1240dp/bottom_navigation.xml" value="0.22734375" />
         <entry key="app/src/main/res/layout-w1240dp/card_category_desing.xml" value="0.373828125" />
         <entry key="app/src/main/res/layout-w1240dp/card_sepet_yemek.xml" value="0.373828125" />
@@ -32,6 +34,7 @@
         <entry key="app/src/main/res/layout-w936dp/activity_login.xml" value="0.221484375" />
         <entry key="app/src/main/res/layout-w936dp/activity_main.xml" value="0.2328125" />
         <entry key="app/src/main/res/layout-w936dp/activity_register_activy.xml" value="0.302734375" />
+        <entry key="app/src/main/res/layout-w936dp/added_to_cart_view_animation.xml" value="0.12473958333333333" />
         <entry key="app/src/main/res/layout-w936dp/bottom_navigation.xml" value="0.2328125" />
         <entry key="app/src/main/res/layout-w936dp/card_category_desing.xml" value="0.2328125" />
         <entry key="app/src/main/res/layout-w936dp/card_product_desing.xml" value="0.33" />
@@ -44,9 +47,10 @@
         <entry key="app/src/main/res/layout-w936dp/fragment_search.xml" value="0.2328125" />
         <entry key="app/src/main/res/layout-w936dp/view_number_dialog.xml" value="0.2701388888888889" />
         <entry key="app/src/main/res/layout/activity_animation.xml" value="0.32909037272135416" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.4036458333333333" />
         <entry key="app/src/main/res/layout/activity_register_activy.xml" value="0.33" />
+        <entry key="app/src/main/res/layout/added_to_cart_view_animation.xml" value="0.30625" />
         <entry key="app/src/main/res/layout/bottom_navigation.xml" value="0.2" />
         <entry key="app/src/main/res/layout/bottomtemp.xml" value="0.2515625" />
         <entry key="app/src/main/res/layout/card_category_desing.xml" value="0.75" />

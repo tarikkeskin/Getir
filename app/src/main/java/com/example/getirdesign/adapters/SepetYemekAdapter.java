@@ -1,5 +1,6 @@
 package com.example.getirdesign.adapters;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -8,6 +9,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -22,6 +24,8 @@ import com.google.android.material.snackbar.Snackbar;
 import com.squareup.picasso.Picasso;
 
 import java.util.List;
+
+import dev.shreyaspatil.MaterialDialog.BottomSheetMaterialDialog;
 
 public class SepetYemekAdapter extends RecyclerView.Adapter<SepetYemekAdapter.SepetYemeklerDesignAttachment> {
 
@@ -67,19 +71,24 @@ public class SepetYemekAdapter extends RecyclerView.Adapter<SepetYemekAdapter.Se
 
 
         t.iVSepetYemekSil.setOnClickListener(view -> {
-            Snackbar.make(view,"Ürünü sepetten kaldırmak istediğine emin misin?",Snackbar.LENGTH_LONG)
-                    .setAction("Evet",view1 -> {
+            BottomSheetMaterialDialog mBottomSheetDialog = new BottomSheetMaterialDialog.Builder((Activity) mContext)
+                    .setTitle("Ürünü Sepetten Kaldırmak istiyor musun?")
+                    .setCancelable(false)
+                    .setPositiveButton("Kaldır", R.drawable.delete_icon, (dialogInterface, which) -> {
                         viewModel.removeProductFromCart(Integer.parseInt(sepetYemek.getSepetYemekId()),"tarik");
                         viewModel.getAllCartProducts();
                         if(sepetYemeklerList.size()==1) {
                             Intent intent = new Intent(mContext, MainActivity.class);
                             mContext.startActivity(intent);
                         }
+                        dialogInterface.dismiss();
                     })
-                    .setActionTextColor(Color.WHITE)
-                    .setTextColor(Color.WHITE)
-                    .setBackgroundTint(Color.rgb(55,0,179))
-                    .show();
+                    .setNegativeButton("İptal", R.drawable.cancel_icon, (dialogInterface, which) -> dialogInterface.dismiss())
+                    .build();
+
+            // Show Dialog
+            mBottomSheetDialog.show();
+
         });
     }
 
