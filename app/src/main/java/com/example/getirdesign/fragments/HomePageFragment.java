@@ -24,12 +24,14 @@ import com.example.getirdesign.adapters.ProductsAdapter;
 import com.example.getirdesign.adapters.SubCategoryAdapter;
 import com.example.getirdesign.databinding.FragmentHomePageBinding;
 import com.example.getirdesign.viewmodel.HomePageFragmentViewModel;
+import com.example.getirdesign.viewmodel.MainPageFragmentViewModel;
 
 
 public class HomePageFragment extends Fragment implements SearchView.OnQueryTextListener {
 
     private FragmentHomePageBinding binding;
     private HomePageFragmentViewModel viewModelHomepage;
+    private MainPageFragmentViewModel viewModelCart;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -44,7 +46,7 @@ public class HomePageFragment extends Fragment implements SearchView.OnQueryText
          * Products Recycler view
          */
         viewModelHomepage.productsList.observe(getViewLifecycleOwner(),list -> {
-            ProductsAdapter adapterProduct = new ProductsAdapter(requireContext(),list,viewModelHomepage);
+            ProductsAdapter adapterProduct = new ProductsAdapter(requireContext(),list,viewModelHomepage,viewModelCart);
             binding.setProductsAdapter(adapterProduct);
         });
 
@@ -75,6 +77,7 @@ public class HomePageFragment extends Fragment implements SearchView.OnQueryText
         super.onCreate(savedInstanceState);
         setHasOptionsMenu(true);
         viewModelHomepage = new ViewModelProvider(requireActivity()).get(HomePageFragmentViewModel.class);
+        viewModelCart = new ViewModelProvider(requireActivity()).get(MainPageFragmentViewModel.class);
     }
 
     @Override
