@@ -1,9 +1,18 @@
-package com.example.getirdesign.adapters;
+package com.example.getirdesign.fragments;
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
+import android.os.Bundle;
+
+import androidx.activity.OnBackPressedCallback;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentActivity;
+import androidx.lifecycle.ViewModelProvider;
+
 import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -13,19 +22,12 @@ import android.widget.LinearLayout;
 import android.widget.NumberPicker;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AlertDialog;
-import androidx.constraintlayout.widget.ConstraintLayout;
-import androidx.databinding.DataBindingUtil;
-import androidx.navigation.NavDirections;
-import androidx.navigation.Navigation;
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.example.getirdesign.R;
+import com.example.getirdesign.adapters.DetailProductAdapter;
+import com.example.getirdesign.adapters.ProductsAdapter;
+import com.example.getirdesign.databinding.FragmentDetailProductBinding;
 import com.example.getirdesign.entities.Products;
-import com.example.getirdesign.databinding.CardProductDesingBinding;
 import com.example.getirdesign.entities.SepetYemekler;
-import com.example.getirdesign.fragments.HomePageFragmentDirections;
 import com.example.getirdesign.viewmodel.HomePageFragmentViewModel;
 import com.example.getirdesign.viewmodel.MainPageFragmentViewModel;
 import com.squareup.picasso.Picasso;
@@ -35,64 +37,51 @@ import java.util.Objects;
 
 import dev.shreyaspatil.MaterialDialog.BottomSheetMaterialDialog;
 
-public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.CardDesignAttachment> {
-    private Context mContext;
-    private List<Products> productsList;
-    private HomePageFragmentViewModel viewModel;
+
+public class DetailProduct extends Fragment {
+    private FragmentDetailProductBinding binding;
+    private HomePageFragmentViewModel viewModelHomepage;
     private MainPageFragmentViewModel viewModelCart;
-
-    public ProductsAdapter(Context mContext, List<Products> productsList, HomePageFragmentViewModel viewModel,MainPageFragmentViewModel viewModelCart) {
-        this.mContext = mContext;
-        this.productsList = productsList;
-        this.viewModel = viewModel;
-        this.viewModelCart = viewModelCart;
-    }
-
-    public class CardDesignAttachment extends RecyclerView.ViewHolder{
-        private CardProductDesingBinding tasarim;
-
-        public CardDesignAttachment(CardProductDesingBinding tasarim) {
-            super(tasarim.getRoot());
-            this.tasarim = tasarim;
-        }
-    }
-
-    @NonNull
     @Override
-    public CardDesignAttachment onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        LayoutInflater layoutInflater = LayoutInflater.from(mContext);
-        CardProductDesingBinding tasarim = DataBindingUtil.inflate(layoutInflater, R.layout.card_product_desing,parent,false);
-        return new CardDesignAttachment(tasarim);
-    }
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
+        // Inflate the layout for this fragment
+        binding = FragmentDetailProductBinding.inflate(inflater, container, false);
 
-    @Override
-    public void onBindViewHolder(@NonNull CardDesignAttachment holder, int position) {
-        Products product = productsList.get(position);
-        CardProductDesingBinding t = holder.tasarim;
+        DetailProductArgs bundle = DetailProductArgs.fromBundle(getArguments());
+        Products product = bundle.getProduct();
 
-        t.setProductObject(product);
 
         String url = "http://kasimadalan.pe.hu/yemekler/resimler/"+product.getProductImage();
-        Picasso.get().load(url).into(t.imageViewProduct);
+        Picasso.get().load(url).into(binding.imageViewDetailProductImage);
+        binding.textViewDetailProductName.setText(product.getProductName());
+        binding.textViewDetailProductFiyat.setText(String.valueOf(product.getProductPrice()));
+        binding.textViewDetailProductAdet.setText("1 porsiyon");
 
-        t.CardViewAddCart.setOnClickListener(view -> {
+        /*
+         * Products Recycler view
+         */
+        viewModelHomepage.productsList.observe(getViewLifecycleOwner(),list -> {
+            DetailProductAdapter adapterProduct = new DetailProductAdapter(requireContext(),list,viewModelHomepage,viewModelCart);
+            binding.rvDetailProduct.setAdapter(adapterProduct);
+        });
+
+        binding.iVBackButtonDetay.setOnClickListener(view -> {
+            requireActivity().onBackPressed();
+        });
+
+        binding.buttonSepeteEkleDetay.setOnClickListener(view -> {
             openDialog(product);
         });
 
-        String temp = String.valueOf(product.getProductPrice());
-        temp = temp.replace('.', ',');
-        t.setProductPrice(temp);
-
-        t.cardViewProduct.setOnClickListener(view -> {
-            HomePageFragmentDirections.DetayGecis gecis = HomePageFragmentDirections.detayGecis(product);
-            Navigation.findNavController(view).navigate((NavDirections) gecis);
-        });
-
+        return binding.getRoot();
     }
 
     @Override
-    public int getItemCount() {
-        return productsList.size();
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        viewModelHomepage = new ViewModelProvider(requireActivity()).get(HomePageFragmentViewModel.class);
+        viewModelCart = new ViewModelProvider(requireActivity()).get(MainPageFragmentViewModel.class);
     }
 
     /**
@@ -101,7 +90,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.CardDe
     private void openDialog(Products product) {
         //Inflating a LinearLayout dynamically to add TextInputLayout
         //This will be added in AlertDialog
-        final LinearLayout linearLayout = (LinearLayout) ((Activity)mContext).getLayoutInflater().inflate(R.layout.view_number_dialog, null);
+        final LinearLayout linearLayout = (LinearLayout) (getActivity()).getLayoutInflater().inflate(R.layout.view_number_dialog, null);
         NumberPicker numberpicker = (NumberPicker) linearLayout.findViewById(R.id.numberPicker1);
 
 
@@ -110,7 +99,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.CardDe
         numberpicker.setValue(1);
 
         //Finally building an AlertDialog
-        final AlertDialog builder = new AlertDialog.Builder(mContext)
+        final AlertDialog builder = new AlertDialog.Builder(getActivity())
                 .setPositiveButton("Ekle", null)
                 .setNegativeButton("İptal", null)
                 .setView(linearLayout)
@@ -122,7 +111,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.CardDe
         builder.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                BottomSheetMaterialDialog mBottomSheetDialog = new BottomSheetMaterialDialog.Builder((Activity) mContext)
+                BottomSheetMaterialDialog mBottomSheetDialog = new BottomSheetMaterialDialog.Builder(getActivity())
                         .setCancelable(false)
                         .setAnimation(R.raw.add_to_cart_animation)
                         .build();
@@ -152,7 +141,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.CardDe
                 }
 
                 if(flag){
-                    viewModel.add(product.getProductName(),
+                    viewModelHomepage.add(product.getProductName(),
                             product.getProductImage(),
                             (int) product.getProductPrice(),
                             numberpicker.getValue(),
@@ -161,7 +150,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.CardDe
                 }else{
                     viewModelCart.removeProductFromCart(Integer.parseInt(temp_id),"tarik");
                     viewModelCart.getAllCartProducts();
-                    viewModel.add(product.getProductName(),
+                    viewModelHomepage.add(product.getProductName(),
                             product.getProductImage(),
                             (int) product.getProductPrice(),
                             numberpicker.getValue()+temp_adet,
@@ -172,6 +161,7 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.CardDe
             }
         });
     }
+
 
 
 }

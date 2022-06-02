@@ -19,7 +19,11 @@
         android:id="@+id/homePageFragment"
         android:name="com.example.getirdesign.fragments.HomePageFragment"
         android:label="fragment_home_page"
-        tools:layout="@layout/fragment_home_page" />
+        tools:layout="@layout/fragment_home_page" >
+        <action
+            android:id="@+id/detayGecis"
+            app:destination="@id/detailProduct" />
+    </fragment>
     <fragment
         android:id="@+id/profilFragment"
         android:name="com.example.getirdesign.fragments.ProfilFragment"
@@ -30,4 +34,13 @@
         android:name="com.example.getirdesign.fragments.GiftsFragment"
         android:label="fragment_gifts"
         tools:layout="@layout/fragment_gifts" />
+    <fragment
+        android:id="@+id/detailProduct"
+        android:name="com.example.getirdesign.fragments.DetailProduct"
+        android:label="fragment_detail_product"
+        tools:layout="@layout/fragment_detail_product" >
+        <argument
+            android:name="product"
+            app:argType="com.example.getirdesign.entities.Products" />
+    </fragment>
 </navigation>

@@ -22,6 +22,7 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.getirdesign.R;
+import com.example.getirdesign.databinding.CardDetailProductsBinding;
 import com.example.getirdesign.entities.Products;
 import com.example.getirdesign.databinding.CardProductDesingBinding;
 import com.example.getirdesign.entities.SepetYemekler;
@@ -35,13 +36,13 @@ import java.util.Objects;
 
 import dev.shreyaspatil.MaterialDialog.BottomSheetMaterialDialog;
 
-public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.CardDesignAttachment> {
+public class DetailProductAdapter extends RecyclerView.Adapter<DetailProductAdapter.CardDesignAttachment> {
     private Context mContext;
     private List<Products> productsList;
     private HomePageFragmentViewModel viewModel;
     private MainPageFragmentViewModel viewModelCart;
 
-    public ProductsAdapter(Context mContext, List<Products> productsList, HomePageFragmentViewModel viewModel,MainPageFragmentViewModel viewModelCart) {
+    public DetailProductAdapter(Context mContext, List<Products> productsList, HomePageFragmentViewModel viewModel,MainPageFragmentViewModel viewModelCart) {
         this.mContext = mContext;
         this.productsList = productsList;
         this.viewModel = viewModel;
@@ -49,9 +50,9 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.CardDe
     }
 
     public class CardDesignAttachment extends RecyclerView.ViewHolder{
-        private CardProductDesingBinding tasarim;
+        private CardDetailProductsBinding tasarim;
 
-        public CardDesignAttachment(CardProductDesingBinding tasarim) {
+        public CardDesignAttachment(CardDetailProductsBinding tasarim) {
             super(tasarim.getRoot());
             this.tasarim = tasarim;
         }
@@ -61,21 +62,21 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.CardDe
     @Override
     public CardDesignAttachment onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater layoutInflater = LayoutInflater.from(mContext);
-        CardProductDesingBinding tasarim = DataBindingUtil.inflate(layoutInflater, R.layout.card_product_desing,parent,false);
+        CardDetailProductsBinding tasarim = DataBindingUtil.inflate(layoutInflater, R.layout.card_detail_products,parent,false);
         return new CardDesignAttachment(tasarim);
     }
 
     @Override
     public void onBindViewHolder(@NonNull CardDesignAttachment holder, int position) {
         Products product = productsList.get(position);
-        CardProductDesingBinding t = holder.tasarim;
+        CardDetailProductsBinding t = holder.tasarim;
 
         t.setProductObject(product);
 
         String url = "http://kasimadalan.pe.hu/yemekler/resimler/"+product.getProductImage();
-        Picasso.get().load(url).into(t.imageViewProduct);
+        Picasso.get().load(url).into(t.imageViewProductDetail);
 
-        t.CardViewAddCart.setOnClickListener(view -> {
+        t.CardViewAddCartDetail.setOnClickListener(view -> {
             openDialog(product);
         });
 
@@ -83,10 +84,6 @@ public class ProductsAdapter extends RecyclerView.Adapter<ProductsAdapter.CardDe
         temp = temp.replace('.', ',');
         t.setProductPrice(temp);
 
-        t.cardViewProduct.setOnClickListener(view -> {
-            HomePageFragmentDirections.DetayGecis gecis = HomePageFragmentDirections.detayGecis(product);
-            Navigation.findNavController(view).navigate((NavDirections) gecis);
-        });
 
     }
 
