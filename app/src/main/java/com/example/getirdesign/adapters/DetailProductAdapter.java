@@ -26,6 +26,7 @@ import com.example.getirdesign.databinding.CardDetailProductsBinding;
 import com.example.getirdesign.entities.Products;
 import com.example.getirdesign.databinding.CardProductDesingBinding;
 import com.example.getirdesign.entities.SepetYemekler;
+import com.example.getirdesign.features.OpenDialogAddProduct;
 import com.example.getirdesign.fragments.HomePageFragmentDirections;
 import com.example.getirdesign.viewmodel.HomePageFragmentViewModel;
 import com.example.getirdesign.viewmodel.MainPageFragmentViewModel;
@@ -77,7 +78,8 @@ public class DetailProductAdapter extends RecyclerView.Adapter<DetailProductAdap
         Picasso.get().load(url).into(t.imageViewProductDetail);
 
         t.CardViewAddCartDetail.setOnClickListener(view -> {
-            openDialog(product);
+            OpenDialogAddProduct addDialog = new OpenDialogAddProduct();
+            addDialog.openDialog(product,viewModelCart,viewModel,mContext);
         });
 
         String temp = String.valueOf(product.getProductPrice());
@@ -90,84 +92,6 @@ public class DetailProductAdapter extends RecyclerView.Adapter<DetailProductAdap
     @Override
     public int getItemCount() {
         return productsList.size();
-    }
-
-    /**
-     * This will construct An {@link AlertDialog} with some custom views.
-     */
-    private void openDialog(Products product) {
-        //Inflating a LinearLayout dynamically to add TextInputLayout
-        //This will be added in AlertDialog
-        final LinearLayout linearLayout = (LinearLayout) ((Activity)mContext).getLayoutInflater().inflate(R.layout.view_number_dialog, null);
-        NumberPicker numberpicker = (NumberPicker) linearLayout.findViewById(R.id.numberPicker1);
-
-
-        numberpicker.setMinValue(1);
-        numberpicker.setMaxValue(20);
-        numberpicker.setValue(1);
-
-        //Finally building an AlertDialog
-        final AlertDialog builder = new AlertDialog.Builder(mContext)
-                .setPositiveButton("Ekle", null)
-                .setNegativeButton("İptal", null)
-                .setView(linearLayout)
-                .setCancelable(false)
-                .create();
-        builder.setCanceledOnTouchOutside(true);
-        builder.show();
-        //Setting up OnClickListener on positive button of AlertDialog
-        builder.getButton(DialogInterface.BUTTON_POSITIVE).setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                BottomSheetMaterialDialog mBottomSheetDialog = new BottomSheetMaterialDialog.Builder((Activity) mContext)
-                        .setCancelable(false)
-                        .setAnimation(R.raw.add_to_cart_animation)
-                        .build();
-                // Show Dialog
-                mBottomSheetDialog.show();
-
-                new Handler().postDelayed(() -> mBottomSheetDialog.dismiss(),5000);
-
-                boolean flag = true;
-                int temp_adet = 0;
-                String temp_id = null;
-
-                try {
-                    List<SepetYemekler> sepetYemeklerList = viewModelCart.cartProductsList.getValue();
-
-                    for (int i = 0; i < sepetYemeklerList.size(); i++) {
-                        if (Objects.equals(sepetYemeklerList.get(i).getYemekAdi(), product.getProductName())) {
-                            flag = false;
-                            temp_adet = Integer.parseInt(sepetYemeklerList.get(i).getYemekSiparisAdet());
-                            temp_id = sepetYemeklerList.get(i).getSepetYemekId();
-                        }
-
-                    }
-                }
-                catch (NullPointerException e){
-                    Log.e("Product",e.toString());
-                }
-
-                if(flag){
-                    viewModel.add(product.getProductName(),
-                            product.getProductImage(),
-                            (int) product.getProductPrice(),
-                            numberpicker.getValue(),
-                            "tarik");
-
-                }else{
-                    viewModelCart.removeProductFromCart(Integer.parseInt(temp_id),"tarik");
-                    viewModelCart.getAllCartProducts();
-                    viewModel.add(product.getProductName(),
-                            product.getProductImage(),
-                            (int) product.getProductPrice(),
-                            numberpicker.getValue()+temp_adet,
-                            "tarik");
-                }
-
-                builder.cancel();
-            }
-        });
     }
 
 
