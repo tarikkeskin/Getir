@@ -1,6 +1,6 @@
 # GetirDesign
 - Java
-- Retrofit2
+- Retrofit2 & RestAPI
 - MVVM architecture
 - Firebase Authentication 
 - Lottie Animations
