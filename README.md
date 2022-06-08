@@ -1,24 +1,24 @@
 # GetirDesign
 - Java
-- Retrofit2
+- Retrofit2 & RestAPI
 - MVVM architecture
 - Firebase Authentication 
 - Lottie Animations
 - Material Diaolog (Ref: https://github.com/PatilShreyas/MaterialDialog-Android)
 #### Login Pages
-![](https://github.com/tarikkeskin/Getir/blob/master/loginpages.png)
+![](https://github.com/tarikkeskin/Getir/blob/master/presentation/loginpages.png)
 #### Products & Cart Pages
-![](https://github.com/tarikkeskin/Getir/blob/master/mainpages.png)
+![](https://github.com/tarikkeskin/Getir/blob/master/presentation/mainpages.png)
 #### Product Detail Page
-![](https://github.com/tarikkeskin/Getir/blob/master/detayproduct.png)
+![](https://github.com/tarikkeskin/Getir/blob/master/presentation/detayproduct.png)
 ## Gifs for testing and animations
-![](https://github.com/tarikkeskin/Getir/blob/master/login_register.gif)
+![](https://github.com/tarikkeskin/Getir/blob/master/presentation/login_register.gif)
 #
-![](https://github.com/tarikkeskin/Getir/blob/master/add_cart.gif)
+![](https://github.com/tarikkeskin/Getir/blob/master/presentation/add_cart.gif)
 #
-![](https://github.com/tarikkeskin/Getir/blob/master/delete_product.gif)
+![](https://github.com/tarikkeskin/Getir/blob/master/presentation/delete_product.gif)
 #
-![](https://github.com/tarikkeskin/Getir/blob/master/detaytest.gif)
+![](https://github.com/tarikkeskin/Getir/blob/master/presentation/detaytest.gif)
 #
-![](https://github.com/tarikkeskin/Getir/blob/master/animations.gif)
+![](https://github.com/tarikkeskin/Getir/blob/master/presentation/animations.gif)
 
