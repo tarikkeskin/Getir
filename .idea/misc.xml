@@ -23,8 +23,10 @@
         <entry key="app/src/main/res/layout-w1240dp/added_to_cart_view_animation.xml" value="0.12473958333333333" />
         <entry key="app/src/main/res/layout-w1240dp/bottom_navigation.xml" value="0.22734375" />
         <entry key="app/src/main/res/layout-w1240dp/card_category_desing.xml" value="0.373828125" />
+        <entry key="app/src/main/res/layout-w1240dp/card_detail_products.xml" value="0.22630208333333332" />
         <entry key="app/src/main/res/layout-w1240dp/card_sepet_yemek.xml" value="0.373828125" />
         <entry key="app/src/main/res/layout-w1240dp/card_subcategory_design.xml" value="0.22734375" />
+        <entry key="app/src/main/res/layout-w1240dp/fragment_detail_product.xml" value="0.22630208333333332" />
         <entry key="app/src/main/res/layout-w1240dp/fragment_home_page.xml" value="0.373828125" />
         <entry key="app/src/main/res/layout-w1240dp/fragment_main_page.xml" value="0.373828125" />
         <entry key="app/src/main/res/layout-w1240dp/fragment_profil.xml" value="0.373828125" />
@@ -37,9 +39,11 @@
         <entry key="app/src/main/res/layout-w936dp/added_to_cart_view_animation.xml" value="0.12473958333333333" />
         <entry key="app/src/main/res/layout-w936dp/bottom_navigation.xml" value="0.2328125" />
         <entry key="app/src/main/res/layout-w936dp/card_category_desing.xml" value="0.2328125" />
+        <entry key="app/src/main/res/layout-w936dp/card_detail_products.xml" value="0.22630208333333332" />
         <entry key="app/src/main/res/layout-w936dp/card_product_desing.xml" value="0.33" />
         <entry key="app/src/main/res/layout-w936dp/card_sepet_yemek.xml" value="0.2328125" />
         <entry key="app/src/main/res/layout-w936dp/card_subcategory_design.xml" value="0.2328125" />
+        <entry key="app/src/main/res/layout-w936dp/fragment_detail_product.xml" value="0.22630208333333332" />
         <entry key="app/src/main/res/layout-w936dp/fragment_gifts.xml" value="0.2328125" />
         <entry key="app/src/main/res/layout-w936dp/fragment_home_page.xml" value="0.2328125" />
         <entry key="app/src/main/res/layout-w936dp/fragment_main_page.xml" value="0.2328125" />
